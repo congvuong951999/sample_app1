@@ -13,10 +13,14 @@ class MicropostsController < ApplicationController
         end
     end
 
+    def show
+        @micropost = Micropost.find(params[:id])
+    end
+
     def destroy
         @micropost.destroy
-        flash[:success] = "Micropost deleted"
-        redirect_to request.referrer || root_url
+        flash[:success] = "deleted thanh cong"
+        redirect_to root_url
     end
 
     private
