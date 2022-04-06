@@ -10,6 +10,7 @@
     </span>
     <span class="timestamp">
         Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+        <div class="btn_delete">
         <% if current_user?(micropost.user) %>
             
             <%= link_to "delete", micropost, data: {
@@ -17,6 +18,7 @@
                         turbo_confirm: 'You sure?'
                     } %>
         <% end %>
-        <%= link_to "show", micropost %>
+        </div>
+        <div class="btn_show"><%= link_to "show", micropost %> </div>
     </span>
 </li>

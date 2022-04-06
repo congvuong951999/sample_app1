@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  resources :microposts do
-    resources :comments
-  end
+  
  
 
   root               'static_pages#home'
@@ -21,6 +19,9 @@ Rails.application.routes.draw do
 
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
-  resources :microposts, only: [:create, :destroy, :show]
+  resources :microposts, only: [:create, :destroy, :show] do
+    resources :comments
+  end
+  resources :comments
   resources :relationships, only:[:create,:destroy]
 end

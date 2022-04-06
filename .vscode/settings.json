@@ -1,0 +1,6 @@
+{
+    "rufo.useBundler": true,
+    "npm.enableRunFromFolder": true,
+    "ruby.format": true,
+    "editor.formatOnSave": true
+}

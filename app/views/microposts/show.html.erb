@@ -1,33 +1,22 @@
-<li id="micropost-<%= @micropost.id %>">
-    <%= link_to gravatar_for(@micropost.user, size: 50), @micropost.user %>
-
-    <span class="user"><%= link_to @micropost.user.name, @micropost.user %></span>
-    <span class="content">
-        <%= @micropost.content %>
-        <div class="img_post">
-        <%=  image_tag @micropost.picture.url if @micropost.picture? %>
-        </div>
-    </span>
-    <span class="timestamp">
-        Posted <%= time_ago_in_words(@micropost.created_at) %> ago.
-        <% if current_user?(@micropost.user) %>
-            
-            <%= link_to "delete", @micropost, data: {
-                        turbo_method: :delete,
-                        turbo_confirm: 'You sure?'
-                    } %>
-        <% end %>
-    </span>
+<li id="micropost-<%= @micropost.id %>" class="showMicropost">
+  <span class = "showMicropost_user">
+    <%= link_to gravatar_for(@micropost.user,size:50), @micropost.user %>
+    <%= link_to @micropost.user.name, @micropost.user %>
+  </span>
+  <span class="showMicropost_content">
+    <strong>Comment:</strong>
+    <%= @micropost.content %>
+  </span>
+  <span class="img_post">
+    <%= image_tag @micropost.picture.url if @micropost.picture?%>
+    <%# <%= image_tag @micropost.display_image if @micropost.image.attached?%>
+  </span>
+  <span class = "showMicropost_timestamp">
+    Posted <%= time_ago_in_words(@micropost.created_at)%> ago.
+    <% if current_user?(@micropost.user) %>
+      <%= button_to "Delete", @micropost,method: :delete,data: {confirm:"You sure?"}, class:"btn_Delete showMicropost_btn"%>
+    <%end%>
+  </span>
+  <%= render 'comments/form'%>
+  <%= render @micropost.comments%>
 </li>
-<div class="card my-1"> # place this card blow the post body.
-  <div class="card-body">
-    <p class="font-weight-bold">Comments</p>
-    <%= form_with(model: [@micropost, @micropost.comments.build]) do |f| %>
-      <div class="form-group">
-        <%= f.label 'New comment' %>
-        <%= f.text_area :body, class: 'form-control' %>
-      </div>
-      <%= f.submit 'Submit', class: 'btn btn-primary' %>
-    <% end %>
-  </div>
-</div>

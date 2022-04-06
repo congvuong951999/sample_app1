@@ -283,8 +283,14 @@
     }
     
     .img_post img {
-        max-width: 100px;
-        max-height: 100px;
+        max-width: 150px;
+        max-height: 150px;
+        display: block;
+        margin: auto;
+    }
+    
+    .form_comment {
+        margin-top: 20px;
     }
     
     // .button_delete {
@@ -297,3 +303,71 @@
     //     text-decoration: none;
     //     color: red;
     // }
+    form.button_to {
+        float: right;
+        margin: 20px 50px 30px;
+    }
+    
+    button.btn_Delete.showMicropost_btn {
+        width: 100px;
+        height: 36px;
+        border-radius: 50px;
+        background-color: black;
+        color: white;
+        border: none;
+    }
+    
+    .btn_show {
+        margin-bottom: 20px;
+    }
+    
+    .btn_show a {
+        width: 100px;
+        height: 36px;
+        border-radius: 50px;
+        background-color: black;
+        color: white;
+        border: none;
+        text-align: center;
+        float: right;
+        padding: 6px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    
+    .btn_delete a {
+        width: 100px;
+        height: 36px;
+        border-radius: 50px;
+        background-color: black;
+        color: white;
+        border: none;
+        text-align: center;
+        float: right;
+        margin-left: 20px;
+        padding: 6px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    
+    .btn_delete a:hover {
+        background-color: rgb(157, 226, 46);
+        color: black;
+    }
+    
+    .btn_show a:hover {
+        background-color: rgb(157, 226, 46);
+        color: black;
+    }
+    
+    .microposts li {
+        margin-bottom: 20px;
+    }
+    
+    .user_avatars a {
+        margin-bottom: 10px;
+    }
+    
+    .display-hidden {
+        display: none;
+    }

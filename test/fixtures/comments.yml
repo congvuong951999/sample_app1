@@ -2,10 +2,12 @@
 
 one:
   body: MyText
-  micropost_id: 1
   parent_id: 1
+  user: one
+  micropost: one
 
 two:
   body: MyText
-  micropost_id: 1
   parent_id: 1
+  user: two
+  micropost: two

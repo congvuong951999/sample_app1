@@ -1,17 +1,37 @@
-<div id="<%= dom_id comment %>">
-  <p>
-    <strong>Body:</strong>
-    <%= comment.body %>
-  </p>
 
-  <p>
-    <strong>Micropost:</strong>
-    <%= comment.micropost_id %>
-  </p>
+<% unless comment.parent_id || !comment.persisted? %>
+  <div  class="form_comment">
+    <%= link_to gravatar_for(comment.user, size: 40), comment.user %>
+    <span class="form_comment-user">
+      <%= link_to comment.user.name, comment.user %>
+    </span>
+    <span class="form_comment-timerastamp">
+      <%= time_ago_in_words(comment.created_at) %> ago.
+    </span>
+    <div class="form_comment-body">
+      <strong>Comment:</strong>
+      <%= comment.body %>
+      <%= button_tag 'Reply', class: 'btn btn-primary btn-sm btn-reply',
+      data: {id: @micropost.id, parent_id: comment.id} %>
 
-  <p>
-    <strong>Parent:</strong>
-    <%= comment.parent_id %>
-  </p>
 
-</div>
+
+
+
+    
+
+
+
+
+
+
+      <%= button_to "Delete", comment,method: :delete,data: {confirm:"You sure?"}, class:"btn_Delete showMicropost_btn"%>
+
+    </div>
+  </div>
+    <% if comment.replies.any? %>
+      <% comment.replies.each do |reply| %> 
+        <%= render partial: 'comments/reply', locals: { reply: reply } %>
+      <% end %>
+    <% end %>
+<% end %>
